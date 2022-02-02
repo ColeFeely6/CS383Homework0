@@ -29,7 +29,6 @@ def max_unique(lst):
             #   reset counter
             #add i to frontier
 
-    return_max = 0 # May need to make this none https://stackoverflow.com/questions/18623668/python-string-to-int-or-none/18623698
     unique_list = []
     is_unique = True
 
@@ -37,7 +36,6 @@ def max_unique(lst):
         # corner case: if the start of the loop
         if len(unique_list) == 0:
             unique_list.append(lst[i])
-            return_max = lst[i]
         else:
             for j in range(len(unique_list)): # search through the frontier list
                 if lst[i] == unique_list[j]: # Find a match: if this number in lst is seen in frontier list
@@ -63,10 +61,20 @@ def splice_em(list_one, list_two):
     Hint: you'll probably want to use a for or while loop to iterate.  The enumerate() and/or zip() 
     built-in functions might be helpful here: https://docs.python.org/3/library/functions.html    
     """
-    #
-    # fill in function body here
-    #
-    return []  # fix this line!
+    
+    # Here I did not go with the given hints because I thought the tuples from the zip() were a bit too complicated
+    # I thought I could easily combine the two if they are the same length with one for loop
+    return_list = [] # the list that we are returning
+
+    # Check to see if they are the same length
+    if len(list_one) != len(list_two):
+        ValueError("Arrays must have the same size")
+    else:
+        for i in range(len(list_one)):
+            return_list.append(list_one[i])
+            return_list.append(list_two[i])
+
+    return return_list  # fix this line!
 
 
 # Exercise 3 (8 points)
