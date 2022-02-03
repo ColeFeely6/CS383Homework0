@@ -10,7 +10,7 @@
 # compare your results to the answers in the comments.
 #
 
-
+## TODO Make a readme 
 # Exercise 1 (6 points)
 def max_unique(lst):
     """Returns the largest element of a list that appears only once"""
@@ -61,7 +61,7 @@ def splice_em(list_one, list_two):
     Hint: you'll probably want to use a for or while loop to iterate.  The enumerate() and/or zip() 
     built-in functions might be helpful here: https://docs.python.org/3/library/functions.html    
     """
-    
+
     # Here I did not go with the given hints because I thought the tuples from the zip() were a bit too complicated
     # I thought I could easily combine the two if they are the same length with one for loop
     return_list = [] # the list that we are returning
@@ -82,15 +82,32 @@ def reverse_dict_list(d):
     """Reverse a dictionary that maps keys to lists of values.
     
     Given a dictionary that maps each key k1, k2, etc. to a list of values v1, v2, ..., create a 
-    new dictionary keyd by v1, v2, mapping them to lists k1, k2, etc.  
+    new dictionary keys by v1, v2, mapping them to lists k1, k2, etc.
 
     For example, reverse_dict_list({'a':[1, 2, 3], 'b':[1, 3, 5, 7], 'c':[4, 5, 6]}) should return 
     the dictionary {1:['a', 'b'], 2:['a'], 3:['a', 'b'], 5:['b', 'c'], 7:['b'], 4:['c'], 6:['c']}
+
+    # There are ways in python to get the key and values of a dictionary
+    # So I should look these up, it may need some for loops
     """
+    #print("3.", reverse_dict_list({1: ['h', 'e', 'y'], 2: ['h', 'o']}))  # {'h': [1, 2], 'e': [1], 'y': [1], 'o': [2]}
+    new_dict = {}
+    old_keys = []
+    old_vals = []
+
+    '''print("Dict key-value are : ")
+    for key, value in d.items():
+        old_keys.append(key)
+        old_vals.append(value)
+    for i in old_keys:
+        #this doesn't work because they are of different lengths
+        new_dict.update({old_keys[i]:old_vals[i]})'''
+
+
     #
     # fill in function body here
     #
-    return {}  # fix this line!
+    return new_dict  # fix this line!
 
 
 # Exercise 4 (8 points)
@@ -103,6 +120,36 @@ def char_counts(some_text):
     https://docs.python.org/3/library/stdtypes.html#mapping-types-dict
 
     """
+    print('Exercise 4:：')
+    is_unique = True
+    unique_list = []
+    count_list = []
+    count = 0
+    for i in some_text:
+        if len(unique_list) == 0:
+            unique_list.append(i)
+            count_list.append(int(1))
+        else:
+            for j in range(len(unique_list)):
+                if i == unique_list[j]:
+                    is_unique = False
+
+            if is_unique:
+                unique_list.append(i)
+            is_unique = True
+    # Can maybe use this new list to go through the given text and count the number if instances
+    print(unique_list)
+    count_list = [0] * len(unique_list)
+    for i in some_text:
+        for j in unique_list:
+            if i == unique_list[j]:
+                count_list[j] += 1
+    print(count_list)
+
+
+    # Now I have a list of all the unique letters in the given text
+
+
     #
     # fill in function body here
     #
