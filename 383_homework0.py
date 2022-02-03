@@ -146,6 +146,8 @@ def char_counts(some_text):
 
 
     count_list1 = [0] * len(unique_list1)
+
+
     for i in some_text:
         for j in range(len(unique_list1)):
             if i == unique_list1[j]:
@@ -153,7 +155,10 @@ def char_counts(some_text):
     print('unique_list: ',unique_list1)
     print('count_list: ', count_list1)
 
-    return {}  # fix this line!
+    dict = {}
+    for i in range(len(unique_list1)):
+        dict.update({unique_list1[i]:count_list1[i]})
+    return dict  # fix this line!
 
 
 # Exercise 5 (10 points)
