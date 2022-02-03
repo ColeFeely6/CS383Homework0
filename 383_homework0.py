@@ -120,39 +120,39 @@ def char_counts(some_text):
     https://docs.python.org/3/library/stdtypes.html#mapping-types-dict
 
     """
-    print('Exercise 4:：')
-    is_unique = True
-    unique_list = []
-    count_list = []
-    count = 0
+    #TODO my unique list function is messed up, I need to fix it. Look at problem 1 maybe
+
+    # 1. Get unique list
+    # 2. Create a counting list
+    # 3. Sift through the given string and count the number of times that letter is seen
+    # 4. Init a dict
+    # 5. Loop through unique list and counting list to build the new dictionanry
+
+    unique_list1 = []
+    is_unique1 = True
+
     for i in some_text:
-        if len(unique_list) == 0:
-            unique_list.append(i)
-            count_list.append(int(1))
+        # corner case: if the start of the loop
+        if len(unique_list1) == 0:
+            unique_list1.append(i)
         else:
-            for j in range(len(unique_list)):
-                if i == unique_list[j]:
-                    is_unique = False
+            for j in range(len(unique_list1)): # search through the frontier list
+                if i == unique_list1[j]: # Find a match: if this number in lst is seen in frontier list
+                    is_unique1 = False # That number is not unique
+            # My issue is that I need to remove the previous big one if it is found
+            if  is_unique1:
+                unique_list1.append(i)
+            is_unique1 = True
 
-            if is_unique:
-                unique_list.append(i)
-            is_unique = True
-    # Can maybe use this new list to go through the given text and count the number if instances
-    print(unique_list)
-    count_list = [0] * len(unique_list)
+
+    count_list1 = [0] * len(unique_list1)
     for i in some_text:
-        for j in unique_list:
-            if i == unique_list[j]:
-                count_list[j] += 1
-    print(count_list)
+        for j in range(len(unique_list1)):
+            if i == unique_list1[j]:
+                count_list1[j] += 1
+    print('unique_list: ',unique_list1)
+    print('count_list: ', count_list1)
 
-
-    # Now I have a list of all the unique letters in the given text
-
-
-    #
-    # fill in function body here
-    #
     return {}  # fix this line!
 
 
