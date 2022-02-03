@@ -120,7 +120,6 @@ def char_counts(some_text):
     https://docs.python.org/3/library/stdtypes.html#mapping-types-dict
 
     """
-    #TODO my unique list function is messed up, I need to fix it. Look at problem 1 maybe
 
     # 1. Get unique list
     # 2. Create a counting list
@@ -128,36 +127,34 @@ def char_counts(some_text):
     # 4. Init a dict
     # 5. Loop through unique list and counting list to build the new dictionanry
 
-    unique_list1 = []
+    unique_list = []
     is_unique1 = True
 
     for i in some_text:
         # corner case: if the start of the loop
-        if len(unique_list1) == 0:
-            unique_list1.append(i)
+        if len(unique_list) == 0:
+            unique_list.append(i)
         else:
-            for j in range(len(unique_list1)): # search through the frontier list
-                if i == unique_list1[j]: # Find a match: if this number in lst is seen in frontier list
+            for j in range(len(unique_list)): # search through the frontier list
+                if i == unique_list[j]: # Find a match: if this number in lst is seen in frontier list
                     is_unique1 = False # That number is not unique
             # My issue is that I need to remove the previous big one if it is found
             if  is_unique1:
-                unique_list1.append(i)
+                unique_list.append(i)
             is_unique1 = True
 
 
-    count_list1 = [0] * len(unique_list1)
+    count_list = [0] * len(unique_list)
 
 
     for i in some_text:
-        for j in range(len(unique_list1)):
-            if i == unique_list1[j]:
-                count_list1[j] += 1
-    print('unique_list: ',unique_list1)
-    print('count_list: ', count_list1)
+        for j in range(len(unique_list)):
+            if i == unique_list[j]:
+                count_list[j] += 1
 
     dict = {}
-    for i in range(len(unique_list1)):
-        dict.update({unique_list1[i]:count_list1[i]})
+    for i in range(len(unique_list)):
+        dict.update({unique_list[i]:count_list[i]})
     return dict  # fix this line!
 
 
