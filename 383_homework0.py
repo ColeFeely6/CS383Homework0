@@ -208,15 +208,38 @@ def rewrap(txt, c):
     # 3. F
 
     words = txt.split(' ')
-    print("words list: ",words)
-    len_of_words = []
-    for i in range(len(words)):
-        len_of_words.append(len(words[i]))
-    print("length of words: ", len_of_words)
+    line_numb = 0
+    len_of_line = 0
 
     return_string = ''
     space = ' '
     new_line = '\n'
+
+    for i in range(len(words)):
+        if line_numb == 0:
+            # No matter the size of the first word, it is added to the first line
+            return_string += words[i]
+            line_numb += 1
+            len_of_line = len_of_line + len(words[i])
+            continue
+        # If the next word is too long to add to the line
+        if len_of_line + len(words[i]) > c:
+            return_string = return_string + new_line + words[i]
+            # reset the length of the line
+            len_of_line = len(words[i]) + 1
+            continue
+        # if the next word is less than the req (even if one less, the space will fit)
+        if len_of_line + len(words[i]) < c:
+            return_string = return_string + space + words[i]
+            len_of_line = len_of_line + len(words[i]) + 1 # add 1 for the space
+            continue
+        # if the word plus the current length of the line is exactly c
+        if len_of_line + len(words[i]) == c:
+            return_string = return_string + space + words[i]
+            len_of_line = len_of_line + len(words[i])
+            continue
+
+
 
 
 
@@ -292,9 +315,21 @@ def moxie_combos(n):
     Hint: you may want to consider a recursive solution --- given a valid solution for n-1, how
     can you create the solution for n?  
     """
-    #
-    # fill in function body here
-    #
+
+    # So the whole recursive thing is to have multiple branches making their own tuple
+
+    case = 24
+    spack = 6
+    single = 1
+    if n == 1:
+        return 1
+    if n >= case:
+        # Add 1 to section of tuple
+        return moxie_combos(n-case)
+    if n >= spack:
+        return
+
+
     return [(0, 0, 0)]  # fix this line!
 
 
