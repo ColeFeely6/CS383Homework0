@@ -245,18 +245,18 @@ def rewrap(txt, c):
             line_numb += 1
             len_of_line = len_of_line + len(i)
             continue
-        if line_numb + len(i) > c:
+        if len_of_line + len(i) > c:
             return_string += new_line
             return_string += i
             len_of_line = len(i) + 1
             continue
-        if line_numb + len(i) < c:
+        if len_of_line + len(i) < c:
             return_string += space
             return_string += i
             len_of_line += 1
             len_of_line = len_of_line + len(i)
             continue
-        if line_numb + len(i) == c:
+        if len_of_line + len(i) == c:
             return_string  += space
             return_string += i
             len_of_line = len_of_line + len(i)
