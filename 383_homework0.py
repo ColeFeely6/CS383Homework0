@@ -91,23 +91,46 @@ def reverse_dict_list(d):
     # So I should look these up, it may need some for loops
     """
     #print("3.", reverse_dict_list({1: ['h', 'e', 'y'], 2: ['h', 'o']}))  # {'h': [1, 2], 'e': [1], 'y': [1], 'o': [2]}
-    new_dict = {}
+    dict = {}
     old_keys = []
     old_vals = []
 
-    '''print("Dict key-value are : ")
+    # Isolate our keys and value lists
     for key, value in d.items():
         old_keys.append(key)
         old_vals.append(value)
-    for i in old_keys:
-        #this doesn't work because they are of different lengths
-        new_dict.update({old_keys[i]:old_vals[i]})'''
 
+    # Combine the value lists to one list
+    biglist = []
+    for i in range(len(old_vals)):
+        biglist += old_vals[i]
+
+    # Remove duplicates from that list
+    new_letters_list = []
+    for i in biglist:
+        if i not in new_letters_list:
+            new_letters_list.append(i)
+
+    # Now I have a list of the numbers and a list of the letters
+    # Now I need to figure out how I can iterate through that list of letters and find out which keys it was apart of
+    # I could use get on the old list for the keys and compare that to the new_letters_list
+
+    #testing out get and setdefault methods of dictionaries
+    new_numb_list = [ [] for _ in range(len(new_letters_list)) ]
+    #Used: https://stackoverflow.com/questions/33990673/how-to-create-a-list-of-empty-lists/33990750
+
+    for i in range(len(old_keys)):
+        for j in range(len(new_letters_list)):
+            if new_letters_list[j] in old_vals[i]:
+                new_numb_list[j].append(old_keys[i])
+
+    for i in range(len(new_letters_list)):
+        dict.update({new_letters_list[i]:new_numb_list[i]})
 
     #
     # fill in function body here
     #
-    return new_dict  # fix this line!
+    return dict  # fix this line!
 
 
 # Exercise 4 (8 points)
