@@ -215,48 +215,52 @@ def rewrap(txt, c):
     space = ' '
     new_line = '\n'
 
-    for i in range(len(words)):
-        if line_numb == 0:
-            # No matter the size of the first word, it is added to the first line
-            return_string += words[i]
-            line_numb += 1
-            len_of_line = len_of_line + len(words[i])
-            continue
-        # If the next word is too long to add to the line
-        if len_of_line + len(words[i]) > c:
-            return_string = return_string + new_line + words[i]
-            # reset the length of the line
-            len_of_line = len(words[i]) + 1
-            continue
-        # if the next word is less than the req (even if one less, the space will fit)
-        if len_of_line + len(words[i]) < c:
-            return_string = return_string + space + words[i]
-            len_of_line = len_of_line + len(words[i]) + 1 # add 1 for the space
-            continue
-        # if the word plus the current length of the line is exactly c
-        if len_of_line + len(words[i]) == c:
-            return_string = return_string + space + words[i]
-            len_of_line = len_of_line + len(words[i])
-            continue
-
-
-
-
-
-    #idea
-    #i = o
-    #while i != len(words)
-    #if can add this to line ...
-
     # for i in range(len(words)):
-    #     tracker = 0
-    #     return_string += words[i]
-    #     if i != len(words)-1:
+    #     if line_numb == 0:
+    #         # No matter the size of the first word, it is added to the first line
     #         return_string += words[i]
-    #         return_string += space
-    #     else:
-    #         return_string += words[i]
+    #         line_numb += 1
+    #         len_of_line = len_of_line + len(words[i])
+    #         continue
+    #     # If the next word is too long to add to the line
+    #     if len_of_line + len(words[i]) > c:
+    #         return_string = return_string + new_line + words[i]
+    #         # reset the length of the line
+    #         len_of_line = len(words[i]) + 1
+    #         continue
+    #     # if the next word is less than the req (even if one less, the space will fit)
+    #     if len_of_line + len(words[i]) < c:
+    #         return_string = return_string + space + words[i]
+    #         len_of_line = len_of_line + len(words[i]) + 1 # add 1 for the space
+    #         continue
+    #     # if the word plus the current length of the line is exactly c
+    #     if len_of_line + len(words[i]) == c:
+    #         return_string = return_string + space + words[i]
+    #         len_of_line = len_of_line + len(words[i])
+    #         continue
 
+    for i in words:
+        if line_numb == 0:
+            return_string += i
+            line_numb += 1
+            len_of_line = len_of_line + len(i)
+            continue
+        if line_numb + len(i) > c:
+            return_string += new_line
+            return_string += i
+            len_of_line = len(i) + 1
+            continue
+        if line_numb + len(i) < c:
+            return_string += space
+            return_string += i
+            len_of_line += 1
+            len_of_line = len_of_line + len(i)
+            continue
+        if line_numb + len(i) == c:
+            return_string  += space
+            return_string += i
+            len_of_line = len_of_line + len(i)
+            continue
 
     return return_string  # fix this line!
 
