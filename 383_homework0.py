@@ -203,9 +203,7 @@ def rewrap(txt, c):
         our
         mistakes.
     """
-    #
-    # fill in function body here
-    #
+    # we will probably need to split on the space to get our words. Then 
     return ""  # fix this line!
 
 
