@@ -207,7 +207,9 @@ def rewrap(txt, c):
     # 2. Then find the number of letters in each word
     # 3. F
 
-    words = txt.split(' ')
+    nodoubles = " ".join(txt.split())
+    words = nodoubles.split()
+    #words = txt.split(' ')
     line_numb = 0
     len_of_line = 0
 
