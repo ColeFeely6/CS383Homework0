@@ -203,8 +203,39 @@ def rewrap(txt, c):
         our
         mistakes.
     """
-    # we will probably need to split on the space to get our words. Then 
-    return ""  # fix this line!
+    # 1. We will probably need to split on the space to get our words.
+    # 2. Then find the number of letters in each word
+    # 3. F
+
+    words = txt.split(' ')
+    print("words list: ",words)
+    len_of_words = []
+    for i in range(len(words)):
+        len_of_words.append(len(words[i]))
+    print("length of words: ", len_of_words)
+
+    return_string = ''
+    space = ' '
+    new_line = '\n'
+
+
+
+    #idea
+    #i = o
+    #while i != len(words)
+    #if can add this to line ...
+
+    # for i in range(len(words)):
+    #     tracker = 0
+    #     return_string += words[i]
+    #     if i != len(words)-1:
+    #         return_string += words[i]
+    #         return_string += space
+    #     else:
+    #         return_string += words[i]
+
+
+    return return_string  # fix this line!
 
 
 # Exercise 6 (10 points)
@@ -217,10 +248,29 @@ def is_monotonicish(lst):
     being no more than one greater than the preceeding.  A "mostly monotonic" sequence of numbers
     is either mostly increasing or mostly decreasing. 
     """
-    #
-    # fill in function body here
-    #
-    return True  # fix this line!
+    is_mono = True
+    # I think you need to find two-way differences, like one checking for increasing and the other for decreasing
+    # could do a check to see if it is increasing or decreasing in the first iteration, then
+    is_incr = True
+    if lst[1] < lst[0]: # if the list of words overall should be decreasing
+        is_incr = False
+
+    for i in range(len(lst)):
+        if is_incr:
+            diff = -1
+            if i > 0 and i != len(lst)-1:
+                if lst[i+1] - lst[i] < diff:
+                    is_mono = False
+        else:
+            diff = 1
+            if i > 0 != len(lst)-1:
+                if lst[i+1] - lst[i] > diff:
+                    is_mono = False
+
+
+
+
+    return is_mono  # fix this line!
 
 
 # Exercise 7 (2 points +10 extra credit)
