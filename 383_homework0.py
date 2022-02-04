@@ -224,6 +224,13 @@ def rewrap(txt, c):
             line_numb += 1
             len_of_line = len_of_line + len(words[i])
             continue
+
+            # if the word plus the current length of the line is exactly c
+        if len_of_line + len(words[i]) == c:
+            return_string = return_string + space + words[i]
+            len_of_line = len_of_line + len(words[i])
+            continue
+
         # If the next word is too long to add to the line
         if len_of_line + len(words[i]) > c:
             return_string = return_string + new_line + words[i]
@@ -235,34 +242,7 @@ def rewrap(txt, c):
             return_string = return_string + space + words[i]
             len_of_line = len_of_line + len(words[i]) + 1 # add 1 for the space
             continue
-        # if the word plus the current length of the line is exactly c
-        if len_of_line + len(words[i]) == c:
-            return_string = return_string + space + words[i]
-            len_of_line = len_of_line + len(words[i])
-            continue
 
-    # for i in words:
-    #     if line_numb == 0:
-    #         return_string += i
-    #         line_numb += 1
-    #         len_of_line = len_of_line + len(i)
-    #         continue
-    #     if len_of_line + len(i) > c:
-    #         return_string += new_line
-    #         return_string += i
-    #         len_of_line = len(i) + 1
-    #         continue
-    #     if len_of_line + len(i) < c:
-    #         return_string += space
-    #         return_string += i
-    #         len_of_line += 1
-    #         len_of_line = len_of_line + len(i)
-    #         continue
-    #     if len_of_line + len(i) == c:
-    #         return_string  += space
-    #         return_string += i
-    #         len_of_line = len_of_line + len(i)
-    #         continue
 
     return return_string  # fix this line!
 
